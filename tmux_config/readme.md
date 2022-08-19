@@ -11,9 +11,6 @@ Table of contents
 1. [Key bindings](#key-bindings)
 1. [Status line](#status-line)
 1. [Nested tmux sessions](#nested-tmux-sessions)
-1. [Clipboard integration](#clipboard-integration)
-1. [Themes and customization](#themes-and-customization)
-1. [iTerm2 and tmux integration](#iterm2-and-tmux-integration)
 
 Features
 ---------
@@ -230,7 +227,7 @@ So `~/.tmux.conf` overrides default key bindings for many action, to make them m
     </tr>
     <tr>
         <td><code>&lt;prefix&gt; F12</code></td>
-        <td>Switch off all key binding and prefix hanling in current window. See "Nested sessions" paragraph for more info</td>
+        <td>Switch off all key binding and prefix handling in current window</td>
     </tr>
 </table>
 
@@ -255,7 +252,7 @@ Hide status bar using `<prefix> C-s` keybinding.
 
 Nested tmux sessions
 --------------------
-Press F12 to off the first tmux session.
+Press F12 to off prefix handling in current window. 
 
 When key bindings are "OFF", special `[OFF]` visual indicator is shown in the status line, and status line changes its style (colored to gray).
 
