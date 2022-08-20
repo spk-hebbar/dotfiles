@@ -1,0 +1,93 @@
+"-----------------------------------------------------------------------------
+"General parameters
+"-----------------------------------------------------------------------------
+
+set nocompatible
+set selectmode=
+
+set modeline
+set modelines=5
+set lazyredraw
+
+"Disable mouse completely
+set mouse=
+
+"Yank-into/paste-from X selection clipboard (paste with middle mouse) by default
+set clipboard=unnamed,unnamedplus
+
+"Show tabs, trailing spaces, etc.
+set list
+set lcs=tab:\ \ ,trail:\ ,extends:>,precedes:<,nbsp:&
+
+"Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set ttimeout
+set ttimeoutlen=100
+
+"Indenting
+set autoindent
+set smartindent
+set cinoptions=:0,l1,t0,h0,g0,(1s,u1s,U1s
+filetype plugin indent on
+
+"Line Wrapping
+set wrap
+set linebreak
+
+"Completion menu
+set wildmode=longest,list,full
+set wildmenu
+set complete-=i
+
+"Misc
+set backspace=indent,eol,start
+set matchpairs+=<:>
+set novb
+set t_vb= " Turn off bell
+set nojoinspaces  "only 1 space after [.!?] when joining lines
+set formatoptions=tcq1j
+set formatlistpat=^\ *[0-9]\\+[)\\.]\ *\\\|^\ *[-*+]\ *
+set noswapfile
+
+"Wrap cursor to next line when reaching end of line
+set whichwrap+=<,>,h,l,[,]
+
+"Disable folding
+set nofoldenable
+
+"Sets what is saved when you save a session
+set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
+
+set spelllang=en_us
+augroup our_filetype_spelling
+	autocmd FileType markdown,mkd,mail,rst,text,gitcommit setlocal spell
+augroup END
+
+"When editing a file, always jump to the last cursor position
+if has("autocmd")
+	augroup restore_cursor
+		autocmd! BufReadPost *
+		\	if line("'\"") > 0 && line ("'\"") <= line("$") |
+		\		exe "normal g'\"" |
+		\	endif
+	augroup END
+endif
+
+"lookahead when scrolling
+set scrolloff=3
+set sidescrolloff=5
+set display+=lastline
+
+"automatically reload file when changed from outside vim
+set autoread
+
+"-----------------------------------------------------------------------------
+"source other files
+"-----------------------------------------------------------------------------
+
+runtime mappings.vim
+runtime look_and_feel.vim
+runtime plugins.vim
