@@ -11,7 +11,7 @@ colorscheme tir_black
 set sidescrolloff=2
 set numberwidth=4
 set cursorline
-set colorcolumn=+1,81
+set colorcolumn=81
 
 "Syntax highlight options
 let c_char_is_integer=1
@@ -52,6 +52,7 @@ set ruler
 hi User1 ctermfg=red   guifg=red
 hi User2 ctermfg=blue  guifg=blue
 hi User3 ctermfg=green guifg=green
+hi Comment      ctermfg=brown
 
 set statusline=
 

@@ -16,8 +16,9 @@ set mouse=
 set clipboard=unnamed,unnamedplus
 
 "Show tabs, trailing spaces, etc.
-set list
-set lcs=tab:\ \ ,trail:\ ,extends:>,precedes:<,nbsp:&
+"set list
+"set lcs=tab:\ \ ,trail:\ ,extends:>,precedes:<,nbsp:&
+
 
 "Searching
 set hlsearch
@@ -28,10 +29,10 @@ set ttimeout
 set ttimeoutlen=100
 
 "Indenting
-set autoindent
-set smartindent
-set cinoptions=:0,l1,t0,h0,g0,(1s,u1s,U1s
-filetype plugin indent on
+"set autoindent
+"set smartindent
+"set cinoptions=:0,l1,t0,h0,g0,(1s,u1s,U1s
+"filetype plugin indent on
 
 "Line Wrapping
 set wrap
@@ -76,6 +77,20 @@ if has("autocmd")
 	augroup END
 endif
 
+" Enable indentation guide
+set ts=4 sw=4 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=2
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+" Mark vertical column where the cursor is, another useful feature for checking
+" indentation
+set cursorcolumn
+set cursorline
+
 "lookahead when scrolling
 set scrolloff=3
 set sidescrolloff=5
@@ -85,6 +100,7 @@ set display+=lastline
 set autoread
 
 "-----------------------------------------------------------------------------
+"
 "source other files
 "-----------------------------------------------------------------------------
 

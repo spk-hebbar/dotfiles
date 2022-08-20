@@ -94,6 +94,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte'
 Plug 'fatih/vim-go'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
