@@ -229,6 +229,30 @@ So `~/.tmux.conf` overrides default key bindings for many action, to make them m
         <td><code>&lt;prefix&gt; F12</code></td>
         <td>Switch off all key binding and prefix handling in current window</td>
     </tr>
+    <tr>
+        <td><code>Alt + Up</code></td>
+        <td>Enter copy mode</td>
+    </tr>
+    <tr>
+        <td><code>Alt + Enter</code></td>
+        <td>Create new tmux window</td>
+    </tr>
+    <tr>
+        <td><code>Alt + v</code></td>
+        <td>Create vertical split</td>
+    </tr>
+    <tr>
+        <td><code>Alt + h</code></td>
+        <td>Create horizontal split</td>
+    </tr>
+    <tr>
+        <td><code>Alt + Right arrow</code></td>
+        <tf>Move to right pane</td>
+    </tr>
+    <tr>
+        <td><code>Alt + Left arrow</code></td>
+        <tf>Move to left pane</td>
+    </tr>
 </table>
 
 
