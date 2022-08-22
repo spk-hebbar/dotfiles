@@ -38,6 +38,9 @@ alias gc='git checkout'
 #Show the latest log
 alias gl='git log -1 HEAD'
 
+#git diff
+alias gd='git diff'
+
 if [ -e $HOME/.bash_functions ]; then
 	source $HOME/.bash_functions
 fi

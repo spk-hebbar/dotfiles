@@ -19,3 +19,32 @@ function ff() {
 	fi
 	find "$@" | grep -i -- "$pattern"
 }
+
+#Function to refer .ssh/config to resolve hostname
+function ping()
+{
+    # Process args
+    local i=0
+    local options=""
+    local host=""
+    for arg
+    do
+        i=$(($i+1))
+        if [ "$i" -lt "$#" ]
+        then
+            options="${options} ${arg}"
+        else
+            host="${arg}"
+        fi
+    done
+
+    # Find host
+    local hostname=$(awk "\$1==\"Host\" {host=\$2} \$1==\"HostName\" && host==\"${host}\" {print \$2}" "$HOME/.ssh/config")
+    if [ -z "$hostname" ]
+    then
+        hostname="$host"
+    fi
+
+    # Run ping
+    /bin/ping $options $hostname
+}
