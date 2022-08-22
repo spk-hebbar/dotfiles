@@ -19,3 +19,18 @@ export PATH
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
+
+# Share the history amongst all terminals
+# This tells bash to save the history after *each* command
+# default behaviour is to save history on terminal exit
+shopt -s histappend histreedit histverify
+__prompt_command() {
+    history -a
+    # set terminal title to the current directory
+    if tput hs; then
+        tput tsl
+        printf 'bash: %s' "${PWD/#$HOME/\~}"
+        tput fsl
+    fi
+}
+export PROMPT_COMMAND='__prompt_command'

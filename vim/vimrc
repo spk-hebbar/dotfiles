@@ -91,6 +91,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 set cursorcolumn
 set cursorline
 
+"Remove all trailing whitespaces in the file by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 "lookahead when scrolling
 set scrolloff=3
 set sidescrolloff=5
