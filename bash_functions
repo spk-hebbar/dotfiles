@@ -48,3 +48,8 @@ function ping()
     # Run ping
     /bin/ping $options $hostname
 }
+
+function hexmask()
+{
+    python3 hexmask.py $@
+}
