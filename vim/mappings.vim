@@ -160,27 +160,32 @@ endfunction
 
 nnoremap <C-l> :call InsertLicense()<CR>
 
+"Map backspace to <Ctrl t>
+nnoremap <BS> <C-t>
+"Map enter key to <Ctrl ]>
+nnoremap <return> <C-]>
+
 "-----------------------------------------------------------------------------
 "tags
 "-----------------------------------------------------------------------------
 
-nnoremap <silent> ù <C-]>
-nnoremap <silent> ! :silent tnext<CR>
-
-"-----------------------------------------------------------------------------
-"Cscope
-"-----------------------------------------------------------------------------
-
-function InitCscope()
-	set cscopetag " use cscope with ctags shortcuts
-	set cspc=9 " display full path names
-	set nocscoperelative
-	set nocscopeverbose
-	let l:root = GitRoot()
-	call system('cd ' . l:root . ' && cscope -bR')
-	exec 'cscope add ' . l:root . '/cscope.out'
-	set cscopeverbose
-	nnoremap <buffer> <silent> <F3> :cs find g <C-R>=expand("<cword>")<CR><CR>
-endfunction
-
-autocmd FileType c call InitCscope()
+"nnoremap <silent> ù <C-]>
+"nnoremap <silent> ! :silent tnext<CR>
+"
+""-----------------------------------------------------------------------------
+""Cscope
+""-----------------------------------------------------------------------------
+"
+"function InitCscope()
+"	set cscopetag " use cscope with ctags shortcuts
+"	set cspc=9 " display full path names
+"	set nocscoperelative
+"	set nocscopeverbose
+"	let l:root = GitRoot()
+"	call system('cd ' . l:root . ' && cscope -bR')
+"	exec 'cscope add ' . l:root . '/cscope.out'
+"	set cscopeverbose
+"	nnoremap <buffer> <silent> <F3> :cs find g <C-R>=expand("<cword>")<CR><CR>
+"endfunction
+"
+"autocmd FileType c call InitCscope()
