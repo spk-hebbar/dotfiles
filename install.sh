@@ -41,8 +41,11 @@ echo "OK: Completed"
 #-------------------------------------------------------------------------------
 
 echo "Include script to display network hardware information"
-ln -sf ./net-hw.sh $HOME/.local/bin/
+ln -sf $DIR/net-hw.sh $HOME/.local/bin/
 echo "OK: Completed"
 
 #-------------------------------------------------------------------------------
 
+echo "Install ctags"
+ln -sf $DIR/gentags /usr/local/bin/gentags
+echo "OK: Completed"
