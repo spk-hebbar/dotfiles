@@ -49,3 +49,6 @@ echo "OK: Completed"
 echo "Install ctags"
 ln -sf $DIR/gentags /usr/local/bin/gentags
 echo "OK: Completed"
+
+#Mount the file system from CSB laptop to current server
+#sshfs -o allow_other,IdentityFile=/root/.ssh/id_rsa spk@10.74.18.55:/home/spk/work/ /mnt/spk

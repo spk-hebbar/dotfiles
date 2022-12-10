@@ -1,8 +1,8 @@
 #!/bin/bash
 #Stop execution if any error in encountered
 set -e
-
-DIR=/usr/local/src/spk
+#Assumes that the system has RHEL 9
+DIR=~/
 
 function install_dpdk {
     dnf install git meson python3-pip
@@ -50,34 +50,44 @@ function install_ovs_ovn {
 
 function install_frr {
     #Build and install FRR
-    dnf groupinstall "Development Tools"
+    dnf groupinstall "Development Tools" -y
 
-    subscription-manager register --username=rh-ee-spk --password=Redhat27  --consumerid=270454d7-cae4-4165-8fa6-5ee69b68fc0d
+    subscription-manager register --username=rh-ee-spk --password=Redhat27
 
-    subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+    dnf install python3-requests -y
+    dnf install python3-pip -y
+    subscription-manager repos --disable rhel-9-for-x86_64-appstream-beta-rpms
+    subscription-manager repos --disable rhel-9-for-x86_64-baseos-beta-rpms
 
-    yum module enable python39-devel
+    dnf install json-c-devel.x86_64 elfutils-libelf-devel.x86_64 python3-devel.x86_64 readline-devel.x86_64 libcap-devel.x86_64 byacc.x86_64 patch python3-sphinx.noarch python3-pytest.noarch texinfo nmap cmake pcre2-devel -y
 
-    dnf install json-c-devel.x86_64 elfutils-libelf-devel.x86_64 python39-devel.x86_64 readline-devel.x86_64 libcap-devel.x86_64 byacc.x86_64 patch python3-sphinx.noarch python3-pytest.noarch texinfo nmap cmake pcre2-devel
+    dnf install protobuf.x86_64 protobuf-c.x86_64 protobuf-c-compiler.x86_64 protobuf-c-devel.x86_64 protobuf-compiler.x8_64 -y
 
-    dnf install protobuf.x86_64 protobuf-c.x86_64 protobuf-c-compiler.x86_64 protobuf-c-devel.x86_64 protobuf-compiler.x86_64
     cd $DIR
     git clone https://github.com/CESNET/libyang.git
     cd libyang
     git checkout v2.0.0
     mkdir build; cd build
-    dnf install cmake doxygen pcre2-devel
+    dnf install cmake doxygen pcre2-devel -y
     cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr -D CMAKE_BUILD_TYPE:String="Release" ..
     make
     make install
 
-    dnf install readline readline-devel.x86_64 libcap libcap-devel.x86_64
+    dnf install readline readline-devel.x86_64 libcap libcap-devel.x86_64 -y
     cd $DIR
     git clone https://github.com/FRRouting/frr.git
     cd frr
     ./bootstrap.sh
     ./configure     --prefix=/usr     --localstatedir=/var/run/frr     --sbindir=/usr/lib/frr     --sysconfdir=/etc/frr     --enable-pimd     --enable-watchfrr --enable-fpm --enable-protobuf
     make && make install
+
+    #configuration
+    cp -r /usr/local/src/frr/tools/etc/frr/ /etc/frr
+    adduser frr
+    groupadd frrvty
+    chown -r frr:frr /etc/frr
+    chown frr:frrvty /etc/frr/vtysh.conf
+    cp tools/frr.service /etc/systemd/system
 }
 #DONE
 
