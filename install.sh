@@ -8,6 +8,8 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 #Parent install script
 #-------------------------------------------------------------------------------
 echo "Copying bashrc files"
+touch $HOME/.bashrc $HOME/.bash_aliases $HOME/.bash_functions
+
 if [ -e "$HOME/.bashrc" ] || [ -e "$HOME/.bash_aliases" ]; then
 	echo "bashrc exists, backing up as $HOME/.bashrc_bkup"
 	mv $HOME/.bashrc $HOME/.bashrc_bkup
@@ -21,6 +23,7 @@ echo "OK: Completed"
 #-------------------------------------------------------------------------------
 
 echo "Install and configure tmux"
+dnf install tmux -y
 #Call the tmux installation script
 ./tmux_config/install.sh
 #-------------------------------------------------------------------------------
@@ -40,6 +43,8 @@ echo "OK: Completed"
 
 #-------------------------------------------------------------------------------
 
+mkdir $HOME/.local
+mkdir $HOME/.local/bin
 echo "Include script to display network hardware information"
 ln -sf $DIR/net-hw.sh $HOME/.local/bin/
 echo "OK: Completed"

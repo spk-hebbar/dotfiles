@@ -8,7 +8,7 @@ alias lt='ls --human-readable --size -1 -S --classify'
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
 
 #Find a command in history
-alias gh='history|grep'
+#alias gh='history|grep'
 
 #Sort by modification time, to know where you left your work
 alias left='ls -t -1'
@@ -23,7 +23,7 @@ alias cpv='rsync -ah --info=progress2'
 alias trm='mv --force -t ~/.local/share/Trash '
 
 #Just disable rm
-alias rm='abc'
+#alias rm='abc'
 
 alias c='clear'
 
