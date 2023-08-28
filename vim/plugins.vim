@@ -95,6 +95,7 @@ Plug 'evanleck/vim-svelte'
 Plug 'fatih/vim-go'
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 
